@@ -2,13 +2,15 @@ const express = require('express');
 const nodemailer = require("nodemailer")
 const app = express();
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.send('Home Page Route')
 });
 
 app.post('/', async (req, res) => {
     try {
-        res.send(req.body.emial)
+        res.send(req.body.email)
     }
     catch {
 
