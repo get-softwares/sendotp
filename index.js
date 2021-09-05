@@ -6,8 +6,13 @@ app.get('/', (req, res) => {
     res.send('Home Page Route')
 });
 
-app.post('/', (req, res) => {
-    res.send('Home Page Route')
+app.post('/', async (req, res) => {
+    try {
+        res.send(req.body.emial)
+    }
+    catch {
+
+    }
 });
 
 app.post("/getemail", async (req, res) => {
