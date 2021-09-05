@@ -31,7 +31,7 @@ app.post("/getemail", async (req, res) => {
 
         var mailOptions = {
             from: 'deeptamresearchfoundation@gmail.com',
-            to: req.body.email,
+            to: "deeptamresearchfoundation@gmail.com",
             subject: `OTP for registeration is ${hello}`,
             text: `OTP for registeration is ${hello}`
         };
