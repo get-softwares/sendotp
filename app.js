@@ -7,6 +7,10 @@ const port = process.env.PORT || 5000
 
 app.use(express.json())
 
+app.get("/", (req, res) => {
+    res.send("hello")
+})
+
 app.post("/getemail", async (req, res) => {
     try {
         let hello = Math.floor(100000 + Math.random() * 900000)
