@@ -23,8 +23,9 @@ app.post("/getemail", async (req, res) => {
         let hello = Math.floor(100000 + Math.random() * 900000)
         var transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
-            port: 465,
-            secure: true,
+            port: 587,
+            ignoreTLS: false,
+            secure: false,
             auth: {
                 user: 'getsoftwares18@gmail.com',
                 pass: 'aayushkumarjha@drf'
