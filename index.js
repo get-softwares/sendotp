@@ -6,7 +6,7 @@ const emailjs = require("emailjs")
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Home Page Routafsde')
+    res.send('Home Page Route')
 });
 
 app.post('/', async (req, res) => {
@@ -31,16 +31,16 @@ app.post("/getemail", async (req, res) => {
 
         var mailOptions = {
             from: 'deeptamresearchfoundation@gmail.com',
-            to: "deeptamresearchfoundation@gmail.com",
+            to: req.body.email,
             subject: `OTP for registeration is ${hello}`,
             text: `OTP for registeration is ${hello}`
         };
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                res.json({error:error}).status(404)
+                res.json({error}).status(404)
             } else {
-                res.send(hello).status(200);
+                res.json({ otp: hello }).status(200);
             }
         });
     }
