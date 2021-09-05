@@ -1,6 +1,7 @@
 const express = require('express');
 const nodemailer = require("nodemailer")
 const app = express();
+const emailjs = require("emailjs")
 
 app.use(express.json())
 
@@ -39,7 +40,7 @@ app.post("/getemail", async (req, res) => {
             if (error) {
                 res.send(error).status(404)
             } else {
-                res.json({ otp: hello }).status(200);
+                res.send(info).status(200);
             }
         });
     }
