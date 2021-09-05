@@ -1,12 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>/* SmtpJS.com - v3.0.0 */
+        var Email = { send: function (a) { return new Promise(function (n, e) { a.nocache = Math.floor(1e6 * Math.random() + 1), a.Action = "Send"; var t = JSON.stringify(a); Email.ajaxPost("https://smtpjs.com/v3/smtpjs.aspx?", t, function (e) { n(e) }) }) }, ajaxPost: function (e, n, t) { var a = Email.createCORSRequest("POST", e); a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.onload = function () { var e = a.responseText; null != t && t(e) }, a.send(n) }, ajax: function (e, n) { var t = Email.createCORSRequest("GET", e); t.onload = function () { var e = t.responseText; null != n && n(e) }, t.send() }, createCORSRequest: function (e, n) { var t = new XMLHttpRequest; return "withCredentials" in t ? t.open(e, n, !0) : "undefined" != typeof XDomainRequest ? (t = new XDomainRequest).open(e, n) : t = null, t } };</script>
 </head>
+
 <body>
-    dasfdsf
+    <script>
+        function getParameter(parameterName) {
+            var parameters = new URLSearchParams(window.location.search);
+            return parameters.get(parameterName);
+        }
+        let hello = Math.floor(100000 + Math.random() * 900000)
+        function sendemail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "deeptamresearchfoundationweb@gmail.com",
+                Password: "aayushkumarjha@drf",
+                To: getParameter("email"),
+                From: "deeptamresearchfoundationweb@gmail.com",
+                Subject: `${hello}`,
+                Body: "And this is the body"
+            }).then(
+                message => alert(message)
+            );
+        }
+        document.write(hello)
+        sendemail()
+    </script>
 </body>
+
 </html>
