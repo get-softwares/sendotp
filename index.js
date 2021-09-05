@@ -6,7 +6,7 @@ const emailjs = require("emailjs")
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Home Page Routesdf')
+    res.send('Home Page Rouasdftesdf')
 });
 
 app.post('/', async (req, res) => {
@@ -22,10 +22,9 @@ app.post("/getemail", async (req, res) => {
     try {
         let hello = Math.floor(100000 + Math.random() * 900000)
         var transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            ignoreTLS: false,
+            service: 'gmail',
             secure: false,
+            port: 25,
             auth: {
                 user: 'getsoftwares18@gmail.com',
                 pass: 'aayushkumarjha@drf'
