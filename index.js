@@ -6,7 +6,7 @@ const emailjs = require("emailjs")
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send('Home Page Route')
+    res.send('Home Page Routesdf')
 });
 
 app.post('/', async (req, res) => {
@@ -22,7 +22,9 @@ app.post("/getemail", async (req, res) => {
     try {
         let hello = Math.floor(100000 + Math.random() * 900000)
         var transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
             auth: {
                 user: 'getsoftwares18@gmail.com',
                 pass: 'aayushkumarjha@drf'
@@ -38,7 +40,7 @@ app.post("/getemail", async (req, res) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                res.json({error}).status(404)
+                res.json({ error }).status(404)
             } else {
                 res.json({ otp: hello }).status(200);
             }
