@@ -1,18 +1,15 @@
-const express = require('express')
-const app = express()
-// const nodemailer = require("nodemailer")
+const express = require('express');
 
-const port = process.env.PORT || 5000
+const app = express();
 
-app.use(express.json())
+app.get('/', (req, res) => res.send('Home Page Route'));
 
-app.get("/", (req, res) => {
-    res.send("hello")
-})
+app.get('/about', (req, res) => res.send('About Page Route'));
 
-app.post("/getemail", async (req, res) => {
-    res.send("hello")
-})
+app.get('/portfolio', (req, res) => res.send('Portfolio Page Route'));
 
-app.listen(port, () => {
-})
+app.get('/contact', (req, res) => res.send('Contact Page Route'));
+
+const port = process.env.PORT || 3000;
+
+app.listen(port, () => console.log(`Server running on ${port}, http://localhost:${port}`));
