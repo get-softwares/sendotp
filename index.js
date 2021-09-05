@@ -18,38 +18,44 @@ app.post('/', async (req, res) => {
     }
 });
 
-app.post("/getemail", async (req, res) => {
-    try {
+// app.post("/getemail", async (req, res) => {
+    // try {
         let hello = Math.floor(100000 + Math.random() * 900000)
-        var transporter = nodemailer.createTransport({
+        let transporter = nodemailer.createTransport({
             service: 'gmail',
             secure: false,
             port: 25,
-            auth: {
+            auth:{
                 user: 'getsoftwares18@gmail.com',
                 pass: 'aayushkumarjha@drf'
             }
-        });
+        })
+        
+        let mailOptions = {
+            from: '"Portfolio Message" <myotheremail@gmail.com> ',
+            to: "deeptamresearchfoundation@gmail.com",
+            subject: '',
+            text: '',
+            html: ''
+        }
+        
+        app.post('/getemail',function(req,res){
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.write(JSON.stringify({ status: "OK" }));
+            res.end();
+            mailOptions['subject'] = 'new portfolio message from ' + req.body.name ;
+            mailOptions['text'] = req.body.message + " \n      " + " phone number or email : " + req.body.phone_or_email;
+        
+            transporter.sendMail(mailOptions,(error,info)=>{
+                error?console.log('error',error):console.log('success');
+            });
+        
+        })
+    // }
+//     catch {
 
-        var mailOptions = {
-            from: 'deeptamresearchfoundation@gmail.com',
-            to: req.body.email,
-            subject: `OTP for registeration is ${hello}`,
-            text: `OTP for registeration is ${hello}`
-        };
-
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                res.json({ error }).status(404)
-            } else {
-                res.json({ otp: hello }).status(200);
-            }
-        });
-    }
-    catch {
-
-    }
-})
+//     }
+// })
 
 const port = process.env.PORT || 3000;
 
