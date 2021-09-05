@@ -38,9 +38,9 @@ app.post("/getemail", async (req, res) => {
 
         transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
-                res.send(error).status(404)
+                res.json({error:error}).status(404)
             } else {
-                res.send(info).status(200);
+                res.send(hello).status(200);
             }
         });
     }
