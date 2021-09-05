@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
     res.send('Home Page Route')
 });
 
+app.post('/', (req, res) => {
+    res.send('Home Page Route')
+});
+
 app.post("/getemail", async (req, res) => {
     try {
         let hello = Math.floor(100000 + Math.random() * 900000)
